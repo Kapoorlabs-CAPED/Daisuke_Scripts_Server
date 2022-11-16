@@ -1,0 +1,9 @@
+model_dir:  '/gpfsstore/rech/jsy/uzj81mi/Daisuke_Models/'
+unet_model_dir:  model_dir + 'Unet/'
+
+base_dir: '/gpfsstore/rech/jsy/uzj81mi/Daisuke_Data_Training/'
+raw_dir: 'raw/'
+binary_mask_dir: 'binary_mask/'
+
+predict_image_dir: '/gpfsstore/rech/jsy/uzj81mi/Daisuke_Data_Microtubules/raw/'
+save_dir: '/gpfsstore/rech/jsy/uzj81mi/Daisuke_Data_Microtubules/seg/'

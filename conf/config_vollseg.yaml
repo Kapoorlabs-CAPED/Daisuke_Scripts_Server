@@ -1,0 +1,31 @@
+params:
+   
+    depth: 3
+    epochs: 200
+    learning_rate: 0.0003
+    batch_size: 4
+    patch_x: 64
+    patch_y: 64
+    kern_size: 3
+    n_patches_per_image: 32
+    startfilter: 32
+    erosion_iterations: 0
+    generate_npz: True
+    validation_split: 0.01
+    n_channel_in: 1
+    train_unet: True
+    train_star: False
+    train_loss: 'mae'
+    file_type: '*.tif'
+    min_size: 1
+    min_size_mask: 10
+    max_size: 1000000
+    n_tiles: [4,4]
+    axes: 'YX'
+    
+
+defaults:
+   - files_vollseg: vollseg_files
+   - paths_vollseg: vollseg_paths_jean_zay
+   - _self_ 
+       
