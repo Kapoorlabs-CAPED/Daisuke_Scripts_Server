@@ -26,6 +26,25 @@ class Params:
         n_tiles: tuple
         axes: str
                
+@dataclass
+class AugParams:
+        gauss_filter_size: int
+        #choices for augmentation below are 1 or 2 or None
+        flip_axis: int 
+        shift_axis: int 
+        zoom_axis: int 
+        #shift range can be between -1 and 1 (-1 and 1 will translate the pixels completely out), zoom range > 0
+        shift_range: float
+        zoom_range: int
+        rotate_axis: int
+        rotation_angles: list 
+        pattern : list 
+        sigma : int 
+        mean : int 
+        alpha_affine : float
+        alpha : int
+        distribution : str     
+    
     
 @dataclass
 class Paths: 
