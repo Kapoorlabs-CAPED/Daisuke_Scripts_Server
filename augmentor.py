@@ -92,29 +92,7 @@ def main( config : VollSegConfig):
                             imwrite(save_name_seg, aug_addnoise_pixels_label.astype('uint16'))
                         count = count + 1  
 
-                        flip_pixels = AugmentYX(vertical_flip = True)
-
-                        aug_flip_pixels,aug_flip_pixels_label  = flip_pixels.build(image = np.copy(image), labelimage = labelimage)
-                        
-                        save_name_raw = aug_image_dir + '/' + 'vflip_'  + name + '.tif'
-                        save_name_seg = aug_seg_image_dir + '/' + 'vflip_'  + name + '.tif'
-                        if os.path.exists(save_name_raw) == False:
-                            imwrite(save_name_raw, aug_addnoise_pixels.astype('float32'))
-                        if os.path.exists(save_name_seg) == False:    
-                            imwrite(save_name_seg, aug_addnoise_pixels_label.astype('uint16'))
-                        count = count + 1
-
-                        flip_pixels = AugmentYX(horizontal_flip = True)
-
-                        aug_flip_pixels,aug_flip_pixels_label  = flip_pixels.build(image = np.copy(image), labelimage = labelimage)
-                        
-                        save_name_raw = aug_image_dir + '/' + 'hflip_'  + name + '.tif'
-                        save_name_seg = aug_seg_image_dir + '/' + 'hflip_'  + name + '.tif'
-                        if os.path.exists(save_name_raw) == False:
-                            imwrite(save_name_raw, aug_addnoise_pixels.astype('float32'))
-                        if os.path.exists(save_name_seg) == False:    
-                            imwrite(save_name_seg, aug_addnoise_pixels_label.astype('uint16'))
-                        count = count + 1
+                       
                         
                         
 if __name__=='__main__':
