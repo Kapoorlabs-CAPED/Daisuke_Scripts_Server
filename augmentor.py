@@ -50,9 +50,9 @@ def main( config : VollSegConfig):
                     name = os.path.basename(os.path.splitext(fname)[0])
                     LabelName = os.path.basename(os.path.splitext(secondfname)[0])
                     if name == LabelName:
-                        image = imread(fname)
+                        image = imread(os.path.join(image_dir,fname))
                     
-                        labelimage = imread(secondfname)
+                        labelimage = imread(os.opath.join(label_dir,secondfname))
                         for rotate_angle in rotation_angles:
                                         
                                         rotate_pixels = Augmentation2D(rotate_angle = rotate_angle)
