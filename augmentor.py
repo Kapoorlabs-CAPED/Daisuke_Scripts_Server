@@ -62,10 +62,8 @@ def main( config : VollSegConfig):
                                     
                                         save_name_raw = aug_image_dir + '/' + 'rotation_' +  str(rotate_angle) + name + '.tif'
                                         save_name_seg = aug_seg_image_dir + '/' + 'rotation_' +  str(rotate_angle) + name + '.tif'
-                                        if os.path.exists(save_name_raw) == False:
-                                            imwrite(save_name_raw, aug_rotate_pixels.astype('float32'))
-                                        if os.path.exists(save_name_seg) == False:    
-                                            imwrite(save_name_seg, aug_rotate_pixels_label.astype('uint16'))
+                                        imwrite(save_name_raw, aug_rotate_pixels.astype('float32'))
+                                        imwrite(save_name_seg, aug_rotate_pixels_label.astype('uint16'))
                                         count = count + 1   
 
                         addnoise_pixels = AugmentYX(mean = mean, sigma = sigma, distribution = distribution)
@@ -74,10 +72,8 @@ def main( config : VollSegConfig):
                         
                         save_name_raw = aug_image_dir + '/' + 'noise_' +  str(sigma) + name + '.tif'
                         save_name_seg = aug_seg_image_dir + '/' + 'noise_' +   str(sigma) + name + '.tif'
-                        if os.path.exists(save_name_raw) == False:
-                            imwrite(save_name_raw, aug_addnoise_pixels.astype('float32'))
-                        if os.path.exists(save_name_seg) == False:    
-                            imwrite(save_name_seg, aug_addnoise_pixels_label.astype('uint16'))
+                        imwrite(save_name_raw, aug_addnoise_pixels.astype('float32'))
+                        imwrite(save_name_seg, aug_addnoise_pixels_label.astype('uint16'))
                         count = count + 1                
         
                         adddeform_pixels = AugmentYX(alpha_affine = alpha_affine, alpha = alpha, sigma = sigma)
@@ -86,11 +82,31 @@ def main( config : VollSegConfig):
                         
                         save_name_raw = aug_image_dir + '/' + 'deform_' +  str(sigma) + name + '.tif'
                         save_name_seg = aug_seg_image_dir + '/' + 'deform_' +   str(sigma) + name + '.tif'
-                        if os.path.exists(save_name_raw) == False:
-                            imwrite(save_name_raw, aug_addnoise_pixels.astype('float32'))
-                        if os.path.exists(save_name_seg) == False:    
-                            imwrite(save_name_seg, aug_addnoise_pixels_label.astype('uint16'))
+                        imwrite(save_name_raw, aug_addnoise_pixels.astype('float32'))
+                        imwrite(save_name_seg, aug_addnoise_pixels_label.astype('uint16'))
                         count = count + 1  
+                        
+                        flipud_pixels = AugmentYX(vertical_flip=True)
+
+                        aug_flipud_pixels,aug_flipud_pixels_label  = flipud_pixels.build(image = np.copy(image), labelimage = labelimage)
+                        
+                        save_name_raw = aug_image_dir + '/' + 'flipud_'  + name + '.tif'
+                        save_name_seg = aug_seg_image_dir + '/' + 'flipud_'  + name + '.tif'
+                        imwrite(save_name_raw, aug_flipud_pixels.astype('float32'))
+                        imwrite(save_name_seg, aug_flipud_pixels_label.astype('uint16'))
+                        count = count + 1 
+                        
+                        fliplr_pixels = AugmentYX(horizontal_flip=True)
+
+                        aug_fliplr_pixels,aug_fliplr_pixels_label  = fliplr_pixels.build(image = np.copy(image), labelimage = labelimage)
+                        
+                        save_name_raw = aug_image_dir + '/' + 'fliplr_'  + name + '.tif'
+                        save_name_seg = aug_seg_image_dir + '/' + 'fliplr_'  + name + '.tif'
+                        imwrite(save_name_raw, aug_fliplr_pixels.astype('float32'))
+                        imwrite(save_name_seg, aug_fliplr_pixels_label.astype('uint16'))
+                        count = count + 1 
+                        
+                        
 
                        
                         
