@@ -15,7 +15,7 @@ def main( config : VollSegConfig):
         base_dir = config.paths_vollseg.base_dir
         npz_filename = config.files_vollseg.npz_filename
         model_dir = config.paths_vollseg.model_dir
-        model_name = config.files_vollseg.model_name
+        model_name = config.files_vollseg.unet_model_name
 
         raw_dir = config.paths_vollseg.raw_dir
         real_mask_dir = config.paths_vollseg.real_mask_dir
@@ -32,9 +32,7 @@ def main( config : VollSegConfig):
         kern_size = config.params.kern_size
         n_patches_per_image = config.params.n_patches_per_image
         startfilter = config.params.startfilter
-        use_gpu_opencl = config.params.use_gpu_opencl
         generate_npz = config.params.generate_npz
-        backbone = config.params.backbone
         load_data_sequence = config.params.load_data_sequence
         validation_split = config.params.validation_split
         n_channel_in = config.params.n_channel_in
@@ -56,9 +54,7 @@ def main( config : VollSegConfig):
                     generate_npz = generate_npz,
                     patch_x= patch_x, 
                     patch_y= patch_y, 
-                    erosion_iterations = erosion_iterations,  
                     train_unet = train_unet,
-                    use_gpu = use_gpu_opencl,  
                     batch_size = batch_size, 
                     depth = depth, 
                     kern_size = kern_size, 
