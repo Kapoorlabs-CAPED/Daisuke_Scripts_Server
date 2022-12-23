@@ -33,7 +33,6 @@ def main( config : VollSegConfig):
         n_patches_per_image = config.params.n_patches_per_image
         startfilter = config.params.startfilter
         generate_npz = config.params.generate_npz
-        load_data_sequence = config.params.load_data_sequence
         validation_split = config.params.validation_split
         n_channel_in = config.params.n_channel_in
         train_unet = config.params.train_unet
