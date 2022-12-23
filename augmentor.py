@@ -55,7 +55,7 @@ def main( config : VollSegConfig):
                         labelimage = imread(os.path.join(label_dir,secondfname))
                         for rotate_angle in rotation_angles:
                                         
-                                        rotate_pixels = Augmentation2D(rotate_angle = rotate_angle)
+                                        rotate_pixels = AugmentYX(rotate_angle = rotate_angle)
 
                                         aug_rotate_pixels,aug_rotate_pixels_label  = rotate_pixels.build(image = np.copy(image), labelimage = labelimage)
                                         
@@ -68,7 +68,7 @@ def main( config : VollSegConfig):
                                             imwrite(save_name_seg, aug_rotate_pixels_label.astype('uint16'))
                                         count = count + 1   
 
-                        addnoise_pixels = Augmentation2D(mean = mean, sigma = sigma, distribution = distribution)
+                        addnoise_pixels = AugmentYX(mean = mean, sigma = sigma, distribution = distribution)
 
                         aug_addnoise_pixels,aug_addnoise_pixels_label  = addnoise_pixels.build(image = np.copy(image), labelimage = labelimage)
                         
@@ -80,7 +80,7 @@ def main( config : VollSegConfig):
                             imwrite(save_name_seg, aug_addnoise_pixels_label.astype('uint16'))
                         count = count + 1                
         
-                        adddeform_pixels = Augmentation2D(alpha_affine = alpha_affine, alpha = alpha, sigma = sigma)
+                        adddeform_pixels = AugmentYX(alpha_affine = alpha_affine, alpha = alpha, sigma = sigma)
 
                         aug_adddeform_pixels,aug_adddeform_pixels_label  = adddeform_pixels.build(image = np.copy(image), labelimage = labelimage)
                         
@@ -92,7 +92,7 @@ def main( config : VollSegConfig):
                             imwrite(save_name_seg, aug_addnoise_pixels_label.astype('uint16'))
                         count = count + 1  
 
-                        flip_pixels = Augmentation2D(vertical_flip = True)
+                        flip_pixels = AugmentYX(vertical_flip = True)
 
                         aug_flip_pixels,aug_flip_pixels_label  = flip_pixels.build(image = np.copy(image), labelimage = labelimage)
                         
@@ -104,7 +104,7 @@ def main( config : VollSegConfig):
                             imwrite(save_name_seg, aug_addnoise_pixels_label.astype('uint16'))
                         count = count + 1
 
-                        flip_pixels = Augmentation2D(horizontal_flip = True)
+                        flip_pixels = AugmentYX(horizontal_flip = True)
 
                         aug_flip_pixels,aug_flip_pixels_label  = flip_pixels.build(image = np.copy(image), labelimage = labelimage)
                         
@@ -119,4 +119,4 @@ def main( config : VollSegConfig):
                         
 if __name__=='__main__':
     
-    main()                        
+    main()                           
